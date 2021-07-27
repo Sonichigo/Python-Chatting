@@ -2,9 +2,11 @@ from flask import Flask, request, render_template
 from flask_socketio import SocketIO, emit
 app = Flask(__name__)
 socket = SocketIO(app)
+
 @app.route('/')
 def index():
     return render_template('client.html')
+
 @socket.on('connect')
 def connect():
     print("[CLIENT CONNECTED]:", request.sid)
