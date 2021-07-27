@@ -6,7 +6,7 @@ socket = SocketIO(app,logger=True,engineio_logger=True)
 
 @app.route('/')
 def index():
-    return render_template('client.html',async_mode=socketio.async_mode)
+    return render_template('client.html')
 
 @socket.on('connect')
 def connect():
@@ -25,4 +25,4 @@ def emitback(data):
     emit('returndata', data, broadcast=True)
     
 if __name__ == "__main__":
-    socket.run(app)
+    socket.run(app,debug=True, use_reloader=False)
