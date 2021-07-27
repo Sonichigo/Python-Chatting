@@ -6,7 +6,7 @@ socket = SocketIO(app,logger=True,engineio_logger=True)
 
 @app.route('/')
 def index():
-    return render_template('client.html')
+    return render_template('client.html',async_mode=socketio.async_mode)
 
 @socket.on('connect')
 def connect():
